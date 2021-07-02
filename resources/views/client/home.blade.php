@@ -57,13 +57,19 @@
                     <img src="https://xonsaroy.uz/img/xon-saroy.jpg" alt="Los Angeles" style="width:800px;" class="m-auto">
                 </div> --}}
                 <form action="client/dom" method="GET">
-                    @foreach ($doms as $dom)
+                    @foreach ($doms as $val)
                    
-                    <div class="my-auto item">
-                        <input type="hidden" >
-                        <a><img src="{{$dom->photo}}" alt="Chicago" style="width:800px;" class="m-auto"></a>
-                        <button type="submit" value="{{$dom->id}}" name="dom_id">kirish</button>
-                    </div>
+                    <div class="card shadow-lg m-auto my-4 m-4 " style="width: 90%;">
+                        <a href="#"><img class="card-img-top" src="{{$val->photo}}" alt="Card image cap"></a>
+                        <div class="card-body">
+                          <h5 class="card-title">{{$val->name}}</h5>
+                          <p class="card-text"></p>
+                            @csrf
+                                <input type="hidden" name="dom_id" value="{{$val->id}}">
+                              <button class="btn btn-primary">Go somewhere</button>
+                        </div>
+                      </div>
+                   
                     @endforeach
                 </form>
                 

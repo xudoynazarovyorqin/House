@@ -16,7 +16,7 @@ class Floor extends Model
     ];
     public function podezd()
     {
-        return $this->belongsTo(Podezd::class);
+        return $this->belongsTo(Podezd::class,'podezd_id' , 'id');
     }
     public function apartment()
     {

@@ -154,7 +154,7 @@ class HomeController extends Controller
     {
         
         $client = Client::where('id', $request->client)->first();
-        // dd($client);
+        dd($client);
         Apartment::where('id',$client->apartment_id)->update([
                 'status'=>1
             ]);

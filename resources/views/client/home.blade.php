@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('content')
     
-<header>
-    <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header style="background-color: rgb(185, 185, 185)">
+    <div class="container" style="background-color: rgb(185, 185, 185)">
+                <nav style="background-color: rgb(185, 185, 185)" class="navbar navbar-expand-lg ">
                     <a href="/" class="nav-brand">
                         <img src="https://xonsaroy.uz/logo-1.png" alt="xonsaroy" style="width: 140px">
                     </a>
@@ -56,22 +56,29 @@
                 {{-- <div class="item active"  >
                     <img src="https://xonsaroy.uz/img/xon-saroy.jpg" alt="Los Angeles" style="width:800px;" class="m-auto">
                 </div> --}}
+                @csrf
+                @foreach ($doms as $val)
                 <form action="client/dom" method="GET">
-                    @foreach ($doms as $val)
                    
                     <div class="card shadow-lg m-auto my-4 m-4 " style="width: 90%;">
                         <a href="#"><img class="card-img-top" src="{{$val->photo}}" alt="Card image cap"></a>
                         <div class="card-body">
-                          <h5 class="card-title">{{$val->name}}</h5>
-                          <p class="card-text"></p>
-                            @csrf
-                                <input type="hidden" name="dom_id" value="{{$val->id}}">
-                              <button class="btn btn-primary">Go somewhere</button>
+                          <h3 class="card-title">{{$val->name}}</h3>
+                               @if ($apartment)
+                                   
+                                  @foreach ($apartment   as $item)
+                                    @if ($item->floor->podezd->dom->id == $val->id)
+                                      <input type="hidden" name="dom_id" value="{{$val->id}}">
+                                      <button class="btn btn-primary">Xonadon xarid qilish</button>
+                                    @endif
+                                  @endforeach
+                               @endif
+                               
                         </div>
                       </div>
                    
+                    </form>
                     @endforeach
-                </form>
                 
 {{--                 
                 

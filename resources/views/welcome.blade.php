@@ -31,7 +31,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased" style="background-color: rgb(185, 185, 185)">
       @yield('content')
 
 

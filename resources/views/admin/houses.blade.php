@@ -23,7 +23,7 @@
               <form action="/house-show" method="POST">
                 @csrf
                     <input type="hidden" name="id" value="{{$val->id}}">
-                  <button class="btn btn-primary">Go somewhere</button>
+                  <button class="btn btn-primary">Kirish</button>
               </form>
             </div>
           </div>

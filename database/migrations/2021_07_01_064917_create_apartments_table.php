@@ -18,7 +18,7 @@ class CreateApartmentsTable extends Migration
             $table->integer('floor_id');
             $table->integer('number');
             $table->integer('room');
-            $table->integer('status');
+            $table->integer('status')->default(0);
             $table->integer('cost');
             $table->timestamps();
         });

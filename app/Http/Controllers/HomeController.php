@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dom;
-use App\Models\Podezd;
-use App\Models\Floor;
 use App\Models\Apartment;
+use App\Models\Customer;
+use App\Models\Podezd;
 use App\Models\Client;
+use App\Models\Floor;
+use App\Models\Dom;
 
 class HomeController extends Controller
 {
@@ -40,8 +41,9 @@ class HomeController extends Controller
 
     public function clients()
     {
-        $clients = Client::all();
-        return view('admin.clients',compact('clients'));
+        $clients = Client::where('status', 0)->get();
+        $customers = Customer::all();
+        return view('admin.clients',compact('clients','customers'));
 
     }
 
@@ -143,8 +145,6 @@ class HomeController extends Controller
             'floor_id' => $request->floor_id,
             'room' => $request->room,
             'cost' => $request->cost,
-            'name' => 0,
-            'status' => 0
         ]);
 
         return redirect()->route('houses');
@@ -152,13 +152,18 @@ class HomeController extends Controller
 
     public function clientsPost(Request $request)
     {
-        
         $client = Client::where('id', $request->client)->first();
-        dd($client);
+        // dd($client->apartment_id);
         Apartment::where('id',$client->apartment_id)->update([
-                'status'=>1
-            ]);
-        $client->delete();
+            'status'=>1
+        ]);
+        Client::where('id', $request->client)->update([
+            'status'=>1
+        ]);
+        Customer::create([
+            'apartment_id'=>$client->apartment_id,
+            'client_id' =>$request->client
+        ]);
         return redirect()->route('houses');
     }
 }

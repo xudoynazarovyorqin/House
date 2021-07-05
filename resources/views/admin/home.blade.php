@@ -18,7 +18,8 @@
     <!-- Custom CSS -->
     <link href="{{asset('./assets/plugins/chartist/dist/chartist.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{asset('css/style.min.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/ss.css">
+        <link href="{{asset('css/style.min.css')}}" rel="stylesheet">
     <style>
         .vertical-center{
            
@@ -30,7 +31,7 @@
     </style>
 </head>
 
-<body style="height: 100%; box-sizing:border-box;">
+<body style=" box-sizing:border-box;">
     
     <div class="preloader">
         <div class="lds-ripple">
@@ -60,10 +61,8 @@
 
                 </div>
 
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown float-end">
+                    <ul class="navbar-nav float-end">
+                        <li class="nav-item ">
                             <h5><a  href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();" id="navbarDropdown" >
@@ -75,8 +74,8 @@
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
-                </div>
-            </nav>
+
+                </nav>
         </header>
         <aside class="left-sidebar shadow-lg mr-3" data-sidebarbg="skin6">
 
@@ -100,8 +99,7 @@
                 </nav>
             </div>
         </aside>
-        <div class="page-wrapper">
-            
+        <div class="page-wrapper" style="">
             @yield('content')
         </div>
     </div>

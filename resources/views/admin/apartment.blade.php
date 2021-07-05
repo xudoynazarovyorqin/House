@@ -18,8 +18,8 @@
     <h4  class="m-auto">{{$floor->podezd->number}}</h4>
     <h4  class="m-auto">{{$floor->number}}</h4></div>
     </div>
-    </div>
-       @if (count($floor->apartment) == 0)
+    
+       @if (count($apartment) == 0)
 
     <div class="text-center">
             <h1 style="margin-top: 150px;">
@@ -27,11 +27,11 @@
             </h1>
         </div>
         @endif
-    @if (count($floor->apartment) != 0)
+    @if (count($apartment) != 0)
     
-        <h3 class="text-center mt-3">Sotuvda {{count($floor->apartment)}}ta xonadon mavjud</h3>
+        <h3 class="text-center mt-3">Sotuvda {{count($apartment)}}ta xonadon mavjud</h3>
     
-        @if(count($floor->apartment) != null)
+        @if(count($apartment) != null)
         
         
         <table class="table my-5 text-center" style="width: 80%; margin-left:18%">
@@ -58,10 +58,7 @@
             
               
               @endif
-        @if(count($floor->apartment) == null)
-        <h2 class="text-center mt-4">Sotuvda etaj mavjud emas</h2>
-        @endif
-
+       
     
 
     

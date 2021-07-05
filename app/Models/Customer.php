@@ -4,20 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Client;
 use App\Models\Apartment;
 
-class Client extends Model
+class Customer extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'apartment_id',
-        'fname',
-        'lname',
-        'phone_number',
-        'address'
+        'client_id', 'apartment_id'
     ];
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
     public function apartment()
     {
-        return $this->belongsTo(Apartment::class); 
+        return $this->belongsTo(Apartment::class);
     }
 }

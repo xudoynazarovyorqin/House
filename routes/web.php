@@ -14,7 +14,7 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', [App\Http\Controllers\ClientController::class, 'index']);
+Route::get('/', [App\Http\Controllers\ClientController::class, 'index'])->name('index');
 
 Auth::routes();
 

@@ -19,7 +19,7 @@ class ClientController extends Controller
     public function index()
     {
         $doms = Dom::with('podezd')->get();
-        $apartment = Apartment::with('floor')->where('status',1)->get();        
+        $apartment = Apartment::with('floor')->where('status',0)->get();        
         return view('client.home',compact('doms','apartment'));
     }
 
@@ -41,7 +41,11 @@ class ClientController extends Controller
         ]);
         // 
         $doms = Dom::with('podezd')->get();
-        return view('client.home',compact('doms'));
+       
+        $apartment = Apartment::with('floor')->where('status',0)->get();        
+        // return view('client.home',compact('doms','apartment'));
+        return redirect()->route('index');
+
     }
 
     /**
@@ -102,7 +106,7 @@ class ClientController extends Controller
     public function dom(Request $request)
     {
         $dom = Dom::where('id', $request->dom_id)->first();
-       
+        // $apartment = Apartment::with('floor')->where('status',0)->get();        
         return view('client.dom',compact('dom'));
     }
 
